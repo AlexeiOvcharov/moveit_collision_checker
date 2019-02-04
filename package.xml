@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>moveit_collision_inspector</name>
+  <version>0.0.0</version>
+  <description>The moveit based package for collision checking</description>
+
+  <maintainer email="senex@todo.todo">senex</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>ur10_moveit_config</build_depend>
+  <build_export_depend>ur10_moveit_config</build_export_depend>
+  <exec_depend>ur10_moveit_config</exec_depend>
+
+
+  <export>
+
+  </export>
+</package>

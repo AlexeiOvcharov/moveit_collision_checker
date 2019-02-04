@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+
+<launch>
+	<arg name="file_path" default="data/traektory2.csv" />
+
+	<rosparam ns="UR10" subst_value="True">$(arg file_path)</rosparam>
+	<node pkg="ur10_trajectory_sender" type="sender" name="sender" output="screen"/>
+</launch>
