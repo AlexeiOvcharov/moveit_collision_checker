@@ -18,7 +18,7 @@
 
 #define POINTS 200  // Per 7000
 #define DTMIE 0.008
-std::vector<std::string> jointNames = {"shoulder_pan_joint", "shoulder_lift_joint", "elbow_joint", "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"};
+//std::vector<std::string> jointNames = {"shoulder_pan_joint", "shoulder_lift_joint", "elbow_joint", "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"};
 static const std::string PLANNING_GROUP = "manipulator";
 
 typedef std::vector<std::string> Line;
@@ -27,7 +27,7 @@ typedef actionlib::SimpleActionClient<moveit_msgs::ExecuteTrajectoryAction> Acti
 
 using namespace boost::filesystem;
 
-path packPath(ros::package::getPath("ur10_trajectory_sender"));
+path packPath(ros::package::getPath("moveit_collision_inspector"));
 
 void splitLine(const std::string & str, const char delimeter, std::vector<std::string> & out)
 {
@@ -80,13 +80,15 @@ void readCsv(path p, const char delimeter, std::map<std::string, DColumn> & out)
 
 int main(int argc, char ** argv)
 {
-    ros::init(argc, argv, "sender");
+    ros::init(argc, argv, "inspector");
     ros::NodeHandle nh;
     ros::AsyncSpinner spinner(1);
     spinner.start();
 
     std::string dataFilePath = "";
-    ros::param::get("/UR10", dataFilePath);
+    std::vector<std::string> jointNames;
+    ros::param::get("~file_path", dataFilePath);
+    ros::param::get("~joint_names", jointNames);
 
     // MoveIt!
     moveit::planning_interface::MoveGroupInterface move_group(PLANNING_GROUP);

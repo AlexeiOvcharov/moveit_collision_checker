@@ -5,7 +5,6 @@ project(moveit_collision_inspector)
 add_compile_options(-std=c++11)
 
 find_package(catkin REQUIRED COMPONENTS
-	ur10_moveit_config
 	roslib
 	actionlib
     moveit_ros_move_group
@@ -27,8 +26,8 @@ include_directories(
 	${catkin_INCLUDE_DIRS}
 )
 
-add_executable(sender src/sender.cpp)
-target_link_libraries(sender
+add_executable(inspector src/inspector.cpp)
+target_link_libraries(inspector
 	${catkin_LIBRARIES}
 	${Boost_LIBRARIES}
 )
